@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Configs\" />
     <Folder Include="Datas\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Properties\Langs\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Models\" />
@@ -17,6 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="HandyControl" Version="2.5.0.2" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.0-preview.7.20365.15" />
     <PackageReference Include="One.Core" Version="2.0.8" />
   </ItemGroup>
 
