@@ -13,13 +13,6 @@ namespace UniversalFwForWPF.Helpers
 {
     public class ConfigHelper : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-
         public static ConfigHelper Instance = new Lazy<ConfigHelper>(() => new ConfigHelper()).Value;
 
         private XmlLanguage _lang = XmlLanguage.GetLanguage("zh-cn");
@@ -44,8 +37,13 @@ namespace UniversalFwForWPF.Helpers
             Lang = XmlLanguage.GetLanguage(lang);
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
-       
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
 
     }
 }
