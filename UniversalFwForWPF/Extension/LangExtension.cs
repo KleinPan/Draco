@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-using UniversalFwForWPF.Properties.Langs;
+ 
 
 namespace UniversalFwForWPF.Extension
 {
@@ -10,7 +10,7 @@ namespace UniversalFwForWPF.Extension
     {
         public LangExtension()
         {
-            Source = LangProvider.Instance;
+            Source = UniversalFwForWPF.Properties.Langs. LangProvider.Instance;
         }
     }
 }
