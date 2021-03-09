@@ -33,9 +33,9 @@ namespace UniversalFwForWPF.Helpers
             return result;
         }
 
-        #region 项目管理
+        #region 读写文件列表
 
-        public IEnumerable<ProjectModel> ReadProjectListFromLocal()
+        public IEnumerable<ProjectModel> ReadDirectoryListFromLocal()
         {
             DirectoryInfo dirs = new DirectoryInfo(PathConfig.projectPath); //获得程序所在路径的目录对象
             DirectoryInfo[] dir = dirs.GetDirectories();//获得目录下文件夹对象
@@ -44,50 +44,6 @@ namespace UniversalFwForWPF.Helpers
 
             return list;
         }
-
-        public T ReadProjectContentFromLocal<T>(string directoryPath)
-        {
-            try
-            {
-                T allGatewayConfig;
-
-                #region 基本信息
-
-                var GatewayConfigJson = System.IO.File.ReadAllText(directoryPath + @"\GatewayConfig.json");
-
-                allGatewayConfig = JsonDeserialize<T>(GatewayConfigJson);
-
-                #endregion 基本信息
-
-                return allGatewayConfig;
-            }
-            catch (Exception ex)
-            {
-                MessageHelper.MessageShow(ex.Message, "找不到配置!");
-
-                return default(T);
-            }
-        }
-
-        public void WriteProjectContentTolocal<T>(string path, T allGatewayConfig)
-        {
-            try
-            {
-                string newpath = PathConfig.projectPath + "\\" + path;
-                if (!Directory.Exists(newpath))
-                {
-                    Directory.CreateDirectory(newpath);
-                }
-                var json = JsonConvert.SerializeObject(allGatewayConfig, Formatting.Indented, jsonSerializerSettings);
-                System.IO.File.WriteAllText(newpath + @"\GatewayConfig.json", json);
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-        }
-
-        #endregion 项目管理
 
         public List<string> ReadFileListFromLocal()
         {
@@ -109,5 +65,55 @@ namespace UniversalFwForWPF.Helpers
                 return null;
             }
         }
+
+        #endregion 读写文件列表
+
+        #region 读写内容
+
+        public T ReadContentFromLocal<T>(string directoryPath, string fileName)
+        {
+            try
+            {
+                T Config;
+
+                #region 基本信息
+
+                //var GatewayConfigJson = System.IO.File.ReadAllText(directoryPath + @"\GatewayConfig.json");
+                var content = System.IO.File.ReadAllText(directoryPath + "\\" + fileName + ".json");
+
+                Config = JsonDeserialize<T>(content);
+
+                #endregion 基本信息
+
+                return Config;
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.MessageShow(ex.Message, "找不到配置!");
+
+                return default(T);
+            }
+        }
+
+        public void WriteContentTolocal<T>(T allGatewayConfig, string path, string fileName)
+        {
+            try
+            {
+                string newpath = path;
+                //string newpath = PathConfig.projectPath + "\\" + path;
+                if (!Directory.Exists(newpath))
+                {
+                    Directory.CreateDirectory(newpath);
+                }
+                var json = JsonConvert.SerializeObject(allGatewayConfig, Formatting.Indented, jsonSerializerSettings);
+                System.IO.File.WriteAllText(newpath + "\\" + fileName + ".json", json);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        #endregion 读写内容
     }
 }

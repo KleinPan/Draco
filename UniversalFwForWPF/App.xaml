@@ -36,7 +36,7 @@
 
                 
             </ResourceDictionary.MergedDictionaries>
-
+            <langs:LangProvider x:Key="DefaultLangs" />
             <converters:IntToVisibilityConverter x:Key="IntToVisibilityConverter" />
             <converters:IntToStringConverter x:Key="IntToStringConverter" />
 

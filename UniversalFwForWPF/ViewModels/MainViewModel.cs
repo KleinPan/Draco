@@ -135,7 +135,7 @@ namespace UniversalFwForWPF.ViewModels
 
             ProjectName = newt.Trim();
 
-            var list = IOHelper.Instance.ReadProjectListFromLocal();
+            var list = IOHelper.Instance.ReadDirectoryListFromLocal();
 
             var exist = list.Select(x => x.Name).Any(p => p == ProjectName);
 

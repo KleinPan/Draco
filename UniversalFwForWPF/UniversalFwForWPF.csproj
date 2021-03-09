@@ -10,8 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Resources\Basic\**" />
+    <EmbeddedResource Remove="Resources\Basic\**" />
+    <None Remove="Resources\Basic\**" />
+    <Page Remove="Resources\Basic\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Properties\Langs\" />
-    <Folder Include="Resources\Basic\" />
   </ItemGroup>
 
   <ItemGroup>

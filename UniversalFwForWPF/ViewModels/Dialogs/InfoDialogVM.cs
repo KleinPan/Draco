@@ -12,11 +12,11 @@ using UniversalFwForWPF.ViewModels.Basics;
 
 namespace UniversalFwForWPF.ViewModels.Dialogs
 {
-    public class InfoDialogViewModel : ViewModelBase, IDialogResultable<string>
+    public class InfoDialogVM : ViewModelBase, IDialogResultable<string>
     {
         public ReactiveCommand<Unit, Unit> CloseCmd { get; set; }
 
-        public InfoDialogViewModel()
+        public InfoDialogVM()
         {
             CloseCmd = ReactiveCommand.Create(CloseEvent);
         }

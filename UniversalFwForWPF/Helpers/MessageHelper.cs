@@ -18,7 +18,7 @@ namespace UniversalFwForWPF.Helpers
             // System.Windows.MessageBox.Show(mes);
             var myDialog = Dialog.Show<InfoDialog>();
 
-            myDialog.DataContext = new InfoDialogViewModel()
+            myDialog.DataContext = new InfoDialogVM()
             {
                 Header = header,
                 Message = mes,
