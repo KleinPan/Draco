@@ -37,7 +37,7 @@
             <Button
                 Width="120"
                 Margin="0,32,0,0"
-                Command="{Binding CloseCmd}"
+                Command="{Binding SureCmd}"
                 Content="确定" IsDefault="True"
                 Style="{StaticResource ButtonPrimary}" />
         </StackPanel>

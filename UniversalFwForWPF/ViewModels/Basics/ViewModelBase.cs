@@ -8,6 +8,7 @@ namespace UniversalFwForWPF.ViewModels.Basics
 {
     public class ViewModelBase : ReactiveObject
     {
+        public static readonly NLog.Logger NLogger = NLog.LogManager.GetCurrentClassLogger();
         public virtual void Init()
         {
             //InitCommand();

@@ -35,7 +35,7 @@ namespace UniversalFwForWPF.ViewModels
         [Reactive] public bool ShowMainContent { get; set; }
 
         public MainWindow mainWindow;
-
+        public const string SettingFileName = "Setting";
         public MainViewModel()
         {
         }
