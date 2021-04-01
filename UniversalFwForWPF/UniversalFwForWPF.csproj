@@ -24,6 +24,7 @@
     <PackageReference Include="FluentValidation" Version="9.3.0" />
     <PackageReference Include="HandyControl" Version="3.1.0" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.1" />
+    <PackageReference Include="NLog.Config" Version="4.7.9" />
     <PackageReference Include="One.Control" Version="2.4.3" />
     <PackageReference Include="One.Core" Version="2.0.12" />
     <PackageReference Include="ReactiveUI" Version="13.2.2" />
@@ -51,5 +52,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\Dialogs\" />
+    <Folder Include="Views\Dialogs\" />
   </ItemGroup>
 </Project>

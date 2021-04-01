@@ -3,7 +3,7 @@ using System.Windows.Controls.Primitives;
 
 using HandyControl.Tools;
 
-namespace UniversalFwForWPF.Views.Dialogs
+namespace UniversalFwForWPF.Views.Common
 {
     /// <summary>
     /// InfoDialogWithTimer.xaml 的交互逻辑

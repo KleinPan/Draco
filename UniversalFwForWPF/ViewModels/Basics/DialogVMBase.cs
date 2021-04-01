@@ -12,12 +12,12 @@ using UniversalFwForWPF.ViewModels.Basics;
 namespace UniversalFwForWPF.ViewModels.Dialogs
 {
 
-    public class DialogVMDefault : ViewModelBase, IDialogResultable<DialogResultEnum>
+    public class DialogVMBase : ViewModelBase, IDialogResultable<DialogResultEnum>
     {
         public ReactiveCommand<Unit, Unit> CloseCmd { get; set; }
         public ReactiveCommand<Unit, Unit> SureCmd { get; set; }
 
-        public DialogVMDefault()
+        public DialogVMBase()
         {
             CloseCmd = ReactiveCommand.Create(CloseEvent);
             SureCmd = ReactiveCommand.Create(SureEvent);
@@ -41,30 +41,5 @@ namespace UniversalFwForWPF.ViewModels.Dialogs
         [Reactive] public DialogResultEnum Result { get; set; }
     }
 
-    public class DialogVMString : ViewModelBase, IDialogResultable<string>
-    {
-        public ReactiveCommand<Unit, Unit> CloseCmd { get; set; }
-        public ReactiveCommand<Unit, Unit> SureCmd { get; set; }
-
-        public DialogVMString()
-        {
-            CloseCmd = ReactiveCommand.Create(CloseEvent);
-            SureCmd = ReactiveCommand.Create(SureEvent);
-        }
-
-        public virtual void SureEvent()
-        {
-            CloseEvent();
-        }
-
-        public void CloseEvent()
-        {
-            CloseAction?.Invoke();
-        }
-
-        public Action CloseAction { get; set; }
-
-        [Reactive] public string Header { get; set; }
-        [Reactive] public string Result { get; set; }
-    }
+   
 }

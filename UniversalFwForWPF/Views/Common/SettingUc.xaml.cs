@@ -1,6 +1,6 @@
-﻿using System.Globalization;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using System.Globalization;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -15,11 +15,18 @@ namespace UniversalFwForWPF.Views.Common
     /// <summary> SettingUc.xaml 的交互逻辑 </summary>
     public partial class SettingUc : UserControl
     {
+        public string AppName { get; set; }
+        public string AppVersion { get; set; }
+
         public SettingUc()
         {
             InitializeComponent();
 
-            token = tokenSource.Token;
+            DataContext = this;
+
+            var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
+            AppName = versionInfo.ProductName;
+            AppVersion = "Ver " + versionInfo.ProductVersion;
         }
 
         private void ButtonConfig_OnClick(object sender, RoutedEventArgs e)
@@ -29,19 +36,6 @@ namespace UniversalFwForWPF.Views.Common
 
         private void selectlanguage_onclick(object sender, RoutedEventArgs e)
         {
-            //if (e.OriginalSource is Button button && button.Tag is string langName)
-            //{
-            //    //PopupConfig.IsOpen = false;
-            //    if (langName.Equals(GlobalData.Config.Lang)) return;
-            //    ConfigHelper.Instance.SetLang(langName);
-            //    LangProvider.Culture = new CultureInfo(langName);
-
-            // MessageBus.Current.SendMessage("LangUpdated");
-
-            //    GlobalData.Config.Lang = langName;
-            //    GlobalData.Save();
-            //}
-
             if (e.OriginalSource is MenuItem menu && menu.Tag is string langName)
             {
                 //PopupConfig.IsOpen = false;
@@ -55,11 +49,6 @@ namespace UniversalFwForWPF.Views.Common
                 GlobalData.Save();
             }
         }
-
-        private CancellationTokenSource tokenSource = new CancellationTokenSource();
-        private CancellationToken token;
-        private Task task;
-        private Task lasttask;
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {

@@ -23,7 +23,8 @@
                     </DataTemplate>
                 </hc:FloatingBlock.ContentTemplate>
             </Button>
-            <TextBlock VerticalAlignment="Center" FontSize="16" Text="L3智能网关配置工具" />
+            <TextBlock VerticalAlignment="Center" FontSize="16" Text="{Binding AppName}" />
+            <TextBlock VerticalAlignment="Center" FontSize="16" Text="{Binding AppVersion}"  Margin="10,0,0,0"/>
         </StackPanel>
 
         <Popup Name="PopupConfig" PlacementTarget="{Binding ElementName=ButtonConfig}" StaysOpen="False">

@@ -11,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UniversalFwForWPF.Views.Dialogs
+namespace UniversalFwForWPF.Views.Common
 {
     /// <summary>
-    /// InteractiveDialog.xaml 的交互逻辑
+    /// WaiterDialog.xaml 的交互逻辑
     /// </summary>
-    public partial class InteractiveDialog 
+    public partial class WaiterDialog  
     {
-        public InteractiveDialog()
+        public WaiterDialog()
         {
             InitializeComponent();
         }
