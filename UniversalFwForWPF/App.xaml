@@ -4,6 +4,7 @@
              xmlns:langs="clr-namespace:UniversalFwForWPF.Properties.Langs"
              xmlns:local="clr-namespace:UniversalFwForWPF"
              xmlns:converters="clr-namespace:UniversalFwForWPF.Converters"
+              xmlns:converters2="clr-namespace:One.Control.Converters;assembly=One.Control"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -39,7 +40,7 @@
             <langs:LangProvider x:Key="DefaultLangs" />
             <converters:IntToVisibilityConverter x:Key="IntToVisibilityConverter" />
             <converters:IntToStringConverter x:Key="IntToStringConverter" />
-
+            <converters2:CalculatorConverters x:Key="CalculatorConverters" />
 
 
 

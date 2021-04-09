@@ -138,6 +138,8 @@ namespace UniversalFwForWPF.ViewModels
         private void TestEvent()
         {
             MessageHelper.MessageShow(SettingFileName);
+
+            ListMessageHelper.Notify(SettingFileName);
         }
 
         #endregion CmdEvent
