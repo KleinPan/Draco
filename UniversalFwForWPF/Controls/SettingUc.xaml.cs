@@ -6,11 +6,12 @@ using System.Windows.Controls;
 
 using ReactiveUI;
 
+using UniversalFwForWPF.CommonWnd;
 using UniversalFwForWPF.Datas;
 using UniversalFwForWPF.Helpers;
 using UniversalFwForWPF.Properties.Langs;
 
-namespace UniversalFwForWPF.Views.Common
+namespace UniversalFwForWPF.Controls
 {
     /// <summary> SettingUc.xaml 的交互逻辑 </summary>
     public partial class SettingUc : UserControl

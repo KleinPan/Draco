@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Windows;
 
-namespace UniversalFwForWPF.Views.Common
+namespace UniversalFwForWPF.CommonWnd
 {
     /// <summary>
     /// AboutWindow.xaml 的交互逻辑
