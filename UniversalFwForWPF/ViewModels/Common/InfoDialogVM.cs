@@ -14,6 +14,8 @@ namespace UniversalFwForWPF.ViewModels.Common
 {
     public class InfoDialogVM : DialogVMString
     {
+
+        [Reactive] public string Message { get; set; }
         public InfoDialogVM()
         {
 

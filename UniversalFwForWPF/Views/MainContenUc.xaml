@@ -13,6 +13,6 @@
                 <local:GatewayConfigUc />
             </DataTemplate>-->
         </Grid.Resources>
-
+        <Button Command="{Binding TestCmd}"></Button>
     </Grid>
 </UserControl>

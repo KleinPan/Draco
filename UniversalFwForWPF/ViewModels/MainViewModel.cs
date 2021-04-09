@@ -3,14 +3,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
- 
-using UniversalFwForWPF.ViewModels.Basics;
 
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
-using UniversalFwForWPF.ViewModels.Basics;
 using UniversalFwForWPF.Helpers;
+using UniversalFwForWPF.ViewModels.Basics;
 
 namespace UniversalFwForWPF.ViewModels
 {
@@ -28,14 +26,26 @@ namespace UniversalFwForWPF.ViewModels
 
         public ReactiveCommand<object, Unit> SelectedAssistToolChangedCmd { get; set; }
 
+        public ReactiveCommand<Unit, Unit> TestCmd { get; set; }
+
         #endregion Command
+
+        #region Property
 
         [Reactive] public string ProjectName { get; set; }
 
         [Reactive] public bool ShowMainContent { get; set; }
 
         public MainWindow mainWindow;
+
+        #endregion Property
+
+        #region Const
+
         public const string SettingFileName = "Setting";
+
+        #endregion Const
+
         public MainViewModel()
         {
         }
@@ -62,6 +72,8 @@ namespace UniversalFwForWPF.ViewModels
             NewProjectCmd = ReactiveCommand.Create(NewProject);
             OpenProjectCmd = ReactiveCommand.Create(OpenProject);
             SaveProjectCmd = ReactiveCommand.Create(SaveProjectEvent);
+
+            TestCmd = ReactiveCommand.Create(TestEvent);
             //SelectedConfigurationCmd = ReactiveCommand.Create<object>(SelectedConfiguration);
 
             // SelectedAssistToolChangedCmd = ReactiveCommand.Create<object>(SelectedAssistToolChanged);
@@ -75,10 +87,7 @@ namespace UniversalFwForWPF.ViewModels
             //    string configPath = PathConfig.projectPath + "\\" + res;
             //    var configs = IOHelper.Instance.ReadProjectContentFromLocal(configPath);
 
-            //    if (configs == null || configs.GatewayConfigModel == null)
-            //    {
-            //        return;
-            //    }
+            // if (configs == null || configs.GatewayConfigModel == null) { return; }
 
             //    ProjectName = res;
             //    InitFrameWork();
@@ -123,6 +132,15 @@ namespace UniversalFwForWPF.ViewModels
         }
 
         #endregion Init
+
+        #region CmdEvent
+
+        private void TestEvent()
+        {
+            MessageHelper.MessageShow(SettingFileName);
+        }
+
+        #endregion CmdEvent
 
         #region Project
 
