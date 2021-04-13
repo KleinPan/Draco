@@ -6,7 +6,7 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:UniversalFwForWPF" 
         mc:Ignorable="d" Style="{StaticResource WindowGlow}"  WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="900" Width="1440">
+        Height="900" Width="1440">
     <Grid>
         <ContentControl Name="ControlMain"/>
     </Grid>
