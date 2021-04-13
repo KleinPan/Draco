@@ -25,8 +25,8 @@
     <PackageReference Include="HandyControl" Version="3.1.0" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.1" />
     <PackageReference Include="NLog.Config" Version="4.7.9" />
-    <PackageReference Include="One.Control" Version="2.4.3" />
-    <PackageReference Include="One.Core" Version="2.0.12" />
+    <PackageReference Include="One.Control" Version="2.4.4" />
+    <PackageReference Include="One.Core" Version="2.1.0" />
     <PackageReference Include="ReactiveUI" Version="13.2.2" />
     <PackageReference Include="ReactiveUI.Fody" Version="13.2.2" />
     <PackageReference Include="ReactiveUI.WPF" Version="13.2.2" />
