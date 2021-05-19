@@ -19,11 +19,13 @@ namespace UniversalFwForWPF.CommonWnd
             var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
             CopyRight = versionInfo.LegalCopyright;
 
+            AppName = versionInfo.ProductName;
             ProductVersion = $"v {versionInfo.ProductVersion} ";//{netVersion}
             FileVersion = $"v {versionInfo.FileVersion} ";//{netVersion}
 
         }
 
+        public string AppName { get; set; }
         public static readonly DependencyProperty CopyRightProperty = DependencyProperty.Register(
             "CopyRight", typeof(string), typeof(AboutWindow), new PropertyMetadata(default(string)));
 

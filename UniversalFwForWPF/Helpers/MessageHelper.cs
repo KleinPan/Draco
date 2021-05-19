@@ -2,7 +2,9 @@
 using HandyControl.Tools.Extension;
 
 using UniversalFwForWPF.ViewModels.Common;
+using UniversalFwForWPF.ViewModels.Dialogs;
 using UniversalFwForWPF.Views.Common;
+using UniversalFwForWPF.Views.Dialogs;
 
 namespace UniversalFwForWPF.Helpers
 {

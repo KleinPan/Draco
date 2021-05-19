@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace UniversalFwForWPF.Views.Common
+namespace UniversalFwForWPF.Views.Dialogs
 {
     /// <summary> InfoDialog.xaml 的交互逻辑 </summary>
     public partial class InfoDialog  

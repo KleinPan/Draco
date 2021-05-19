@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace UniversalFwForWPF.Views.Common
 {
     /// <summary>
-    /// WaiterDialog.xaml 的交互逻辑
+    /// SerialportView.xaml 的交互逻辑
     /// </summary>
-    public partial class WaiterDialog  
+    public partial class SerialportUc : UserControl
     {
-        public WaiterDialog()
+        public SerialportUc()
         {
             InitializeComponent();
         }

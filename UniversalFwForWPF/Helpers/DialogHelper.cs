@@ -12,6 +12,7 @@ using UniversalFwForWPF.ViewModels.Common;
 using UniversalFwForWPF.ViewModels.Dialogs;
 using UniversalFwForWPF.Views;
 using UniversalFwForWPF.Views.Common;
+using UniversalFwForWPF.Views.Dialogs;
 
 namespace UniversalFwForWPF.Helpers
 {
@@ -47,7 +48,7 @@ namespace UniversalFwForWPF.Helpers
         {
             var myDialog = Dialog.Show<InfoDialogWithTimer>();
 
-            myDialog.DataContext = new DialogVMBase()
+            myDialog.DataContext = new DialogVMDefault()
             {
                 Header = header,
             };
@@ -59,7 +60,7 @@ namespace UniversalFwForWPF.Helpers
         {
             var myDialog = Dialog.Show<WaiterDialog>();
 
-            myDialog.DataContext = new DialogVMBase()
+            myDialog.DataContext = new DialogVMDefault()
             {
                 Header = header,
             };

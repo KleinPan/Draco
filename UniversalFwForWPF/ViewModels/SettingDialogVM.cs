@@ -11,7 +11,7 @@ using UniversalFwForWPF.ViewModels.Dialogs;
 
 namespace UniversalFwForWPF.ViewModels
 {
-    public class SettingDialogVM : DialogVMBase
+    public class SettingDialogVM : DialogVMDefault
     {
         [Reactive] public int UperLimit { get; set; }
         [Reactive] public int LowerLimit { get; set; }
