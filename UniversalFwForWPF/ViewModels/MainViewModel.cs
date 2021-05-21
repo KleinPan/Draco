@@ -11,6 +11,7 @@ using UniversalFwForWPF.Configs;
 using UniversalFwForWPF.Helpers;
 using UniversalFwForWPF.Models.Project;
 using UniversalFwForWPF.ViewModels.Basics;
+using UniversalFwForWPF.ViewModels.Dialogs;
 
 namespace UniversalFwForWPF.ViewModels
 {
@@ -81,24 +82,6 @@ namespace UniversalFwForWPF.ViewModels
             // SelectedAssistToolChangedCmd = ReactiveCommand.Create<object>(SelectedAssistToolChanged);
         }
 
-        private async void InitStartWindow()
-        {
-            var res = await DialogHelper.Instance.ShowProjectSelectDialog();
-            if (!string.IsNullOrEmpty(res))
-            {
-                string configPath = PathConfig.projectPath + "\\" + res;
-              
-
-                ProjectName = res;
-                InitFrameWork();
-                //InitProject(configs);
-            }
-            else
-            {
-                InitNullFrameWork();
-            }
-        }
-
         public override void InitBindings()
         {
             MessageBus.Current.Listen<string>()
@@ -146,6 +129,23 @@ namespace UniversalFwForWPF.ViewModels
 
         #region Project
 
+        private async void InitStartWindow()
+        {
+            var res = await DialogHelper.Instance.ShowProjectSelectDialog();
+            if (!string.IsNullOrEmpty(res))
+            {
+                string configPath = PathConfig.projectPath + "\\" + res;
+
+                ProjectName = res;
+                InitFrameWork();
+                //InitProject(configs);
+            }
+            else
+            {
+                InitNullFrameWork();
+            }
+        }
+
         private async void NewProject()
         {
             var temp = DialogHelper.Instance.ShowInteractiveDialog("请输入新项目名称:");
@@ -155,15 +155,32 @@ namespace UniversalFwForWPF.ViewModels
 
             ProjectName = newt.Trim();
 
+            var f = ProjectViewModel.GetLocalProjects();
+
             var list = IOHelper.Instance.ReadDirectoryListFromLocal();
 
-            var exist = list.Select(x => x.Name).Any(p => p == ProjectName);
+            var dirExist = list.Select(x => x.Name).Any(p => p == ProjectName);
+            var hisExist = f.Select(x => x.Name).Any(p => p == ProjectName);
 
-            if (exist)
+            if (dirExist || hisExist)
             {
                 MessageHelper.MessageShow("当前项目已存在!");
                 ProjectName = null;
                 return;
+            }
+            else
+            {
+                f.Add(new ProjectModel()
+                {
+                    Name = newt,
+                    CreateTime = DateTime.Now,
+                });
+
+                System.IO.Directory.CreateDirectory(PathConfig.projectPath + "\\" + newt);
+
+                IOHelper.Instance.WriteContentTolocal(f, PathConfig.projectPath, AppConfig.ProjectHistory);
+
+                HandyControl.Controls.Growl.InfoGlobal("新建项目成功!");
             }
 
             InitFrameWork();
@@ -177,7 +194,7 @@ namespace UniversalFwForWPF.ViewModels
         private void SaveProjectEvent()
         {
             SaveProject();
-            HandyControl.Controls.Growl.InfoGlobal("保存成功!");
+            HandyControl.Controls.Growl.InfoGlobal("保存项目成功!");
         }
 
         private async void SaveProject()

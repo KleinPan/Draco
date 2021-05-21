@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
- 
-
 using Newtonsoft.Json;
 
 using UniversalFwForWPF.Configs;
@@ -71,6 +69,7 @@ namespace UniversalFwForWPF.Helpers
         #region 读写内容
 
         #region Json
+
         public T ReadContentFromLocal<T>(string fileName, string directoryPath = "", string ext = ".json")
         {
             try
@@ -85,20 +84,15 @@ namespace UniversalFwForWPF.Helpers
                 if (string.IsNullOrEmpty(directoryPath))
                 {
                     content = System.IO.File.ReadAllText(fileName + ext);
-
                 }
                 else
                 {
                     content = System.IO.File.ReadAllText(directoryPath + "\\" + fileName + ext);
-
                 }
-
 
                 Config = JsonDeserialize<T>(content);
 
                 #endregion 基本信息
-
-
 
                 return Config;
             }
@@ -125,17 +119,18 @@ namespace UniversalFwForWPF.Helpers
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                MessageHelper.MessageShow(ex.Message, "保存模板出错!");
             }
         }
-        #endregion
+
+        #endregion Json
+
         #region Xml
-        /// <summary>
-        /// XML序列化某一类型到指定的文件
-        /// </summary>
-        /// <param name="filePath"></param>
-        /// <param name="obj"></param>
-        /// <param name="type"></param>
+
+        /// <summary> XML序列化某一类型到指定的文件 </summary>
+        /// <param name="filePath"> </param>
+        /// <param name="obj">      </param>
+        /// <param name="type">     </param>
         public static void SerializeToXml<T>(string filePath, T obj)
         {
             try
@@ -150,12 +145,11 @@ namespace UniversalFwForWPF.Helpers
             {
             }
         }
-        /// <summary>
-        /// 从某一XML文件反序列化到某一类型
-        /// </summary>
-        /// <param name="filePath">待反序列化的XML文件名称</param>
-        /// <param name="type">反序列化出的</param>
-        /// <returns></returns>
+
+        /// <summary> 从某一XML文件反序列化到某一类型 </summary>
+        /// <param name="filePath"> 待反序列化的XML文件名称 </param>
+        /// <param name="type">     反序列化出的 </param>
+        /// <returns> </returns>
         public static T DeserializeFromXml<T>(string filePath)
         {
             try
@@ -175,7 +169,8 @@ namespace UniversalFwForWPF.Helpers
                 return default(T);
             }
         }
-        #endregion
+
+        #endregion Xml
 
         #endregion 读写内容
     }

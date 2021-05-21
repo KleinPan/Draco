@@ -4,19 +4,17 @@ using System.Collections.ObjectModel;
 using System.Reactive;
 
 using DynamicData;
+
 using HandyControl.Tools.Extension;
- 
 
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
 using UniversalFwForWPF.Configs;
 using UniversalFwForWPF.Helpers;
-using UniversalFwForWPF.Models;
 using UniversalFwForWPF.Models.Project;
- 
+
 using UniversalFwForWPF.ViewModels.Basics;
-using UniversalFwForWPF.Views;
 
 namespace UniversalFwForWPF.ViewModels.Dialogs
 {
@@ -28,27 +26,22 @@ namespace UniversalFwForWPF.ViewModels.Dialogs
         [Reactive]
         public ProjectModel SelectedProject { get; set; }
 
-      
-        public MainViewModel mainViewModel { get; set; }
-
-       
         #region Command
+
         public ReactiveCommand<Unit, Unit> CloseCmd { get; set; }
 
         public ReactiveCommand<object, Unit> OpenProjectCmd { get; set; }
         public ReactiveCommand<Unit, Unit> DeleteProjectCmd { get; set; }
 
-        #endregion
+        #endregion Command
 
-      
         public Action CloseAction { get; set; }
 
         [Reactive] public string Header { get; set; }
-        [Reactive] public string Result { get; set; }  
+        [Reactive] public string Result { get; set; }
 
-        public ProjectViewModel( )
+        public ProjectViewModel()
         {
-            
             Init();
         }
 
@@ -57,21 +50,24 @@ namespace UniversalFwForWPF.ViewModels.Dialogs
             base.Init();
             InitCommand();
 
-            GetLocalProjects();
+            UpdateUI();
         }
 
-        private void GetLocalProjects()
+        private void UpdateUI()
         {
-            //var list = IOHelper.Instance.ReadProjectFromLocal();
-            var list = IOHelper.Instance.ReadContentFromLocal<List<ProjectModel>>("Projects",PathConfig.ConfigPath);
-
+            var temp = GetLocalProjects();
             ProjctList = new ObservableCollection<ProjectModel>();
-            ProjctList.AddRange(list);
+            ProjctList.AddRange(temp);
+        }
 
-            //foreach (var item in list)
-            //{
-            //    ProjctList.Add(item);
-            //}
+        public static List<ProjectModel> GetLocalProjects()
+        {
+            var list = IOHelper.Instance.ReadContentFromLocal<List<ProjectModel>>(AppConfig.ProjectHistory, PathConfig.ConfigPath);
+            if (list == null)
+            {
+                return new List<ProjectModel>();
+            }
+            return list;
         }
 
         public override void InitCommand()
@@ -82,6 +78,7 @@ namespace UniversalFwForWPF.ViewModels.Dialogs
             DeleteProjectCmd = ReactiveCommand.Create(DeleteProject);
             CloseCmd = ReactiveCommand.Create(CloseEvent);
         }
+
         private void CloseEvent()
         {
             CloseAction?.Invoke();
@@ -94,17 +91,15 @@ namespace UniversalFwForWPF.ViewModels.Dialogs
                 return;
             }
 
-         var res=   await DialogHelper.Instance.ShowResultDialog("确认删除所选项目?");
+            var res = await DialogHelper.Instance.ShowResultDialog("确认删除所选项目?");
 
-            if (res==System.Windows.Forms.DialogResult.Yes)
+            if (res == System.Windows.Forms.DialogResult.Yes)
             {
                 string configPath = PathConfig.projectPath + "\\" + SelectedProject.Name;
                 System.IO.Directory.Delete(configPath, true);
 
-                GetLocalProjects();
-
+                UpdateUI();
             }
-            
         }
 
         private void OpenProject(object obj)
@@ -113,18 +108,6 @@ namespace UniversalFwForWPF.ViewModels.Dialogs
             {
                 return;
             }
-
-            //var configs = IOHelper.Instance.ReadProjectContentFromLocal(SelectedProject.Name);
-
-            //if (configs == null || configs.GatewayConfigModel == null)
-            //{
-            //    return;
-            //}
-
-            //mainViewModel.ProjectName = SelectedProject.Name;
-            //mainViewModel.InitFrameWork();
-            //mainViewModel.InitProject(configs);
-
 
             Result = SelectedProject.Name;
             CloseEvent();

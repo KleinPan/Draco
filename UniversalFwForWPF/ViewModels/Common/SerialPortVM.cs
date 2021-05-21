@@ -163,7 +163,7 @@ namespace UniversalFwForWPF.ViewModels.Common
                         System.Windows.MessageBox.Show("没有串口可用！");
                         return;
                     }
-
+                        
                     SerialPort1.BaudRate = Baudrate;
                     SerialPort1.Parity = (Parity)Parity;
                     SerialPort1.DataBits = (int)DataBit;
