@@ -1,4 +1,6 @@
-﻿using System;
+﻿ 
+
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -79,6 +81,31 @@ namespace UniversalFwForWPF.Helpers
             };
 
             return myDialog.GetResultAsync<SettingModel>();
+        }
+
+        public async Task<string> ShowProjectSelectDialog()
+        {
+            var myDialog = Dialog.Show<ProjectSelectDialog>();
+
+            myDialog.DataContext = new ProjectViewModel();
+
+            var DialogResult1 = await myDialog.GetResultAsync<string>();
+
+            return await Task.FromResult(DialogResult1);
+        }
+
+        public async Task<DialogResult> ShowResultDialog(string header)
+        {
+            var myDialog = Dialog.Show<ResultDialog>();
+
+            myDialog.DataContext = new ResultDialogViewModel()
+            {
+                Header = header,
+            };
+
+            var DialogResult1 = await myDialog.GetResultAsync<DialogResult>();
+
+            return await Task.FromResult(DialogResult1);
         }
     }
 }

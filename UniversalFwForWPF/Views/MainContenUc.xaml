@@ -13,6 +13,18 @@
                 <local:GatewayConfigUc />
             </DataTemplate>-->
         </Grid.Resources>
-        <Button Command="{Binding TestCmd}"></Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Focusable="True" Header="&gt;项目">
+                <MenuItem Command="{Binding NewProjectCmd}" Header="新建项目" />
+                <MenuItem Command="{Binding OpenProjectCmd}" Header="打开项目" />
+                <MenuItem Command="{Binding SaveProjectCmd}" Header="保存项目" />
+            </MenuItem>
+          
+        </Menu>
+        <Button Grid.Row="1" Command="{Binding TestCmd}"></Button>
     </Grid>
 </UserControl>

@@ -7,7 +7,9 @@ using System.Reactive.Linq;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
+using UniversalFwForWPF.Configs;
 using UniversalFwForWPF.Helpers;
+using UniversalFwForWPF.Models.Project;
 using UniversalFwForWPF.ViewModels.Basics;
 
 namespace UniversalFwForWPF.ViewModels
@@ -60,7 +62,7 @@ namespace UniversalFwForWPF.ViewModels
             InitOthers();
             InitStartWindow();
 
-            // InitFrameWork();
+            InitFrameWork();
         }
 
         public override void InitOthers()
@@ -81,22 +83,20 @@ namespace UniversalFwForWPF.ViewModels
 
         private async void InitStartWindow()
         {
-            //var res = await DialogHelper.Instance.ShowSelectListDialog();
-            //if (!string.IsNullOrEmpty(res))
-            //{
-            //    string configPath = PathConfig.projectPath + "\\" + res;
-            //    var configs = IOHelper.Instance.ReadProjectContentFromLocal(configPath);
+            var res = await DialogHelper.Instance.ShowProjectSelectDialog();
+            if (!string.IsNullOrEmpty(res))
+            {
+                string configPath = PathConfig.projectPath + "\\" + res;
+              
 
-            // if (configs == null || configs.GatewayConfigModel == null) { return; }
-
-            //    ProjectName = res;
-            //    InitFrameWork();
-            //    InitProject(configs);
-            //}
-            //else
-            //{
-            //    InitNullFrameWork();
-            //}
+                ProjectName = res;
+                InitFrameWork();
+                //InitProject(configs);
+            }
+            else
+            {
+                InitNullFrameWork();
+            }
         }
 
         public override void InitBindings()
