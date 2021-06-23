@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using One.Control.EnumConverters;
+
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text;
 
-using One.Control.EnumConverters;
-
-namespace UniversalFwForWPF.Datas
+namespace UniversalFWForWPF.Common.Communication.Serialport
 {
     public static class SerialPortData
     {
@@ -30,11 +32,11 @@ namespace UniversalFwForWPF.Datas
         [Description("无")]
         NONE = 0,
 
-        [Description("偶")]
-        EVEN = 1,
-
         [Description("奇")]
-        ODD = 2
+        ODD = 1,
+
+        [Description("偶")]
+        EVEN = 2,
     }
 
     [TypeConverter(typeof(EnumDescriptionTypeConverter))]

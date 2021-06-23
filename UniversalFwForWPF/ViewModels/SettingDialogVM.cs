@@ -11,9 +11,13 @@ using UniversalFwForWPF.Helpers;
 using UniversalFwForWPF.Models;
 using UniversalFwForWPF.ViewModels.Dialogs;
 
+using UniversalFWForWPF.Common.Configs;
+using UniversalFWForWPF.Common.Helpers;
+using UniversalFWForWPF.Common.ViewModels.Basics;
+
 namespace UniversalFwForWPF.ViewModels
 {
-    public class SettingDialogVM : DialogVMDefault, IDialogResultable<SettingModel>
+    public class SettingDialogVM : DialogVMBase, IDialogResultable<SettingModel>
     {
         [Reactive] public int UperLimit { get; set; }
         [Reactive] public int LowerLimit { get; set; }

@@ -11,16 +11,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UniversalFwForWPF.Views.Dialogs
+using UniversalFWForWPF.Common.Helpers;
+namespace UniversalFWForWPF.Common.Views.CommonDialog
 {
     /// <summary>
-    /// LoginDialog.xaml 的交互逻辑
+    /// SerialportSettingDialog.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginDialog
+    public partial class SerialportSettingDialog
     {
-        public LoginDialog()
+        public SerialportSettingDialog()
         {
-            InitializeComponent();
+            //InitializeComponent();
+            this.LoadViewFromUri("/UniversalFWForWPF.Common;component/Views/CommonDialog/SerialportSettingDialog.xaml");
         }
     }
 }

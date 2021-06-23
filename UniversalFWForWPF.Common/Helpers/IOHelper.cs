@@ -1,14 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Text;
 
-using Newtonsoft.Json;
-
-using UniversalFwForWPF.Configs;
-using UniversalFwForWPF.Models.Project;
-
-namespace UniversalFwForWPF.Helpers
+namespace UniversalFWForWPF.Common.Helpers
 {
     public class IOHelper
     {
@@ -30,41 +27,6 @@ namespace UniversalFwForWPF.Helpers
             var result = JsonConvert.DeserializeObject<T>(str, jsonSerializerSettings);
             return result;
         }
-
-        #region 读写文件列表
-
-        public IEnumerable<ProjectModel> ReadDirectoryListFromLocal()
-        {
-            DirectoryInfo dirs = new DirectoryInfo(PathConfig.projectPath); //获得程序所在路径的目录对象
-            DirectoryInfo[] dir = dirs.GetDirectories();//获得目录下文件夹对象
-
-            var list = dir.Select(x => new ProjectModel() { Name = x.Name, CreateTime = x.CreationTime });
-
-            return list;
-        }
-
-        public List<string> ReadFileListFromLocal()
-        {
-            try
-            {
-                List<string> listNames = new List<string>();
-
-                string configPath = PathConfig.templatePath + "\\";
-
-                var list = System.IO.Directory.EnumerateFiles(configPath).Select(x => Path.GetFileNameWithoutExtension(x));
-                listNames.AddRange(list);
-
-                return listNames;
-            }
-            catch (Exception ex)
-            {
-                MessageHelper.MessageShow(ex.Message, "读取模板出错!");
-
-                return null;
-            }
-        }
-
-        #endregion 读写文件列表
 
         #region 读写内容
 
@@ -119,7 +81,8 @@ namespace UniversalFwForWPF.Helpers
             }
             catch (Exception ex)
             {
-                MessageHelper.MessageShow(ex.Message, "保存模板出错!");
+                MessageHelper.MessageShow(ex.Message, "保存配置出错!");
+
             }
         }
 
@@ -131,7 +94,7 @@ namespace UniversalFwForWPF.Helpers
         /// <param name="filePath"> </param>
         /// <param name="obj">      </param>
         /// <param name="type">     </param>
-        public static void SerializeToXml<T>(string filePath, T obj)
+        public void SerializeToXml<T>(string filePath, T obj)
         {
             try
             {
@@ -150,7 +113,7 @@ namespace UniversalFwForWPF.Helpers
         /// <param name="filePath"> 待反序列化的XML文件名称 </param>
         /// <param name="type">     反序列化出的 </param>
         /// <returns> </returns>
-        public static T DeserializeFromXml<T>(string filePath)
+        public T DeserializeFromXml<T>(string filePath)
         {
             try
             {

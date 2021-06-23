@@ -6,7 +6,7 @@ using ReactiveUI;
 
 namespace UniversalFwForWPF.ViewModels.Basics
 {
-    public class ViewModelBase : ReactiveObject
+    public class ViewModelBaseR : ReactiveObject
     {
         public static readonly NLog.Logger NLogger = NLog.LogManager.GetCurrentClassLogger();
         public virtual void Init()

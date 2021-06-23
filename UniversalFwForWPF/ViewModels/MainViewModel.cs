@@ -13,9 +13,12 @@ using UniversalFwForWPF.Models.Project;
 using UniversalFwForWPF.ViewModels.Basics;
 using UniversalFwForWPF.ViewModels.Dialogs;
 
+using UniversalFWForWPF.Common.Configs;
+using UniversalFWForWPF.Common.Helpers;
+
 namespace UniversalFwForWPF.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBaseR
     {
         #region Command
 
@@ -46,7 +49,8 @@ namespace UniversalFwForWPF.ViewModels
         #region Const
 
         public const string SettingFileName = "Setting";
-
+        public const string PluginSettingFileName = "PluginSetting";
+        public const string ProjectSettingFileName = "ProjectSetting";
         #endregion Const
 
         public MainViewModel()
@@ -77,9 +81,7 @@ namespace UniversalFwForWPF.ViewModels
             SaveProjectCmd = ReactiveCommand.Create(SaveProjectEvent);
 
             TestCmd = ReactiveCommand.Create(TestEvent);
-            //SelectedConfigurationCmd = ReactiveCommand.Create<object>(SelectedConfiguration);
-
-            // SelectedAssistToolChangedCmd = ReactiveCommand.Create<object>(SelectedAssistToolChanged);
+           
         }
 
         public override void InitBindings()
@@ -122,7 +124,7 @@ namespace UniversalFwForWPF.ViewModels
         {
             MessageHelper.MessageShow(SettingFileName);
 
-            ListMessageHelper.Notify(SettingFileName);
+            //ListMessageHelper.Notify(SettingFileName);
         }
 
         #endregion CmdEvent
@@ -155,9 +157,9 @@ namespace UniversalFwForWPF.ViewModels
 
             ProjectName = newt.Trim();
 
-            var f = ProjectViewModel.GetLocalProjects();
+            var f = ProjectDialogVM.GetLocalProjects();
 
-            var list = IOHelper.Instance.ReadDirectoryListFromLocal();
+            var list = FileHelper.Instance.ReadDirectoryListFromLocal();
 
             var dirExist = list.Select(x => x.Name).Any(p => p == ProjectName);
             var hisExist = f.Select(x => x.Name).Any(p => p == ProjectName);

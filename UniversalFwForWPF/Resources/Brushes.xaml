@@ -1,4 +1,6 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
 
     <SolidColorBrush x:Key="PrimaryTextBrush" o:Freeze="True" Color="{DynamicResource PrimaryTextColor}" />
+
+    <SolidColorBrush x:Key="MethodColor" o:Freeze="True" Color="#745325" />
 </ResourceDictionary>

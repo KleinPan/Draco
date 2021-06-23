@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.0.0</Version>
+    <Version>2.0.0.0</Version>
 	  <SatelliteResourceLanguages>zh;en</SatelliteResourceLanguages>
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
@@ -17,16 +17,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.2.0" />
     <PackageReference Include="FluentValidation" Version="10.1.0" />
-    <PackageReference Include="HandyControl" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.6" />
-    <PackageReference Include="NLog.Config" Version="4.7.10" />
-    <PackageReference Include="One.Control" Version="2.5.0" />
-    <PackageReference Include="One.Core" Version="2.3.0" />
+   
     <PackageReference Include="ReactiveUI" Version="13.3.2" />
     <PackageReference Include="ReactiveUI.Fody" Version="13.3.2" />
     <PackageReference Include="ReactiveUI.WPF" Version="13.3.2" />
     <PackageReference Include="System.IO.Ports" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UniversalFWForWPF.Common\UniversalFWForWPF.Common.csproj" />
   </ItemGroup>
 
 
@@ -54,5 +55,8 @@
     <None Update="Nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\Common\" />
   </ItemGroup>
 </Project>

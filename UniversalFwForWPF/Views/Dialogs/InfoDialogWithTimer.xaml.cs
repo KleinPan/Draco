@@ -1,14 +1,14 @@
-﻿using System;
-using System.Windows.Controls.Primitives;
+﻿using HandyControl.Tools;
 
-using HandyControl.Tools;
+using System;
+using System.Windows.Controls.Primitives;
 
 namespace UniversalFwForWPF.Views.Dialogs
 {
     /// <summary>
     /// InfoDialogWithTimer.xaml 的交互逻辑
     /// </summary>
-    public partial class InfoDialogWithTimer  
+    public partial class InfoDialogWithTimer
     {
         public InfoDialogWithTimer()
         {

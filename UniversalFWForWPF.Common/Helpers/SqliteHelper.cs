@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 using Microsoft.Data.Sqlite;
 
-using UniversalFwForWPF.Configs;
+using UniversalFWForWPF.Common.Configs;
 
-namespace UniversalFwForWPF.Helpers
+namespace UniversalFwForWPF.Common.Helpers
 {
     class SqliteHelper
     {
@@ -22,7 +22,7 @@ namespace UniversalFwForWPF.Helpers
 
            
 
-            var connectionString = "Data Source=" + PathConfig.basePath + $"\\Data\\{databaseName};Pooling=true;";
+            var connectionString = "Data Source=" + PathConfig.exePath + $"\\Data\\{databaseName};Pooling=true;";
             var connection = new SqliteConnection(connectionString);
 
             connection.Open();

@@ -11,16 +11,15 @@ namespace UniversalFwForWPF.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            CheckResultEnum status = (CheckResultEnum)value;
-
-            if (status == CheckResultEnum.fail)
+            string res = value.ToString();
+            if (res == "Fail")
             {
                 return new System.Windows.Media.SolidColorBrush(Color.FromRgb(252, 57, 90));//红色
 
 
             }
 
-            else if (status == CheckResultEnum.pass)
+            else if (res == "Pass")
             {
                 return new System.Windows.Media.SolidColorBrush(Color.FromRgb(112, 255, 1));//绿色
             }

@@ -11,16 +11,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UniversalFwForWPF.Views.Dialogs
+using UniversalFWForWPF.Common.Helpers;
+namespace UniversalFWForWPF.Common.Views.CommonDialog
 {
     /// <summary>
-    /// LoginDialog.xaml 的交互逻辑
+    /// InfoDialog.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginDialog
+    public partial class InfoDialog
     {
-        public LoginDialog()
+        public InfoDialog()
         {
-            InitializeComponent();
+            //InitializeComponent();
+
+            this.LoadViewFromUri("/Downloader.Common;component/Views/CommonDialog/InfoDialog.xaml");
         }
     }
 }

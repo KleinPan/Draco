@@ -10,11 +10,16 @@ using HandyControl.Tools.Extension;
 using UniversalFwForWPF.Datas;
 using UniversalFwForWPF.Models;
 using UniversalFwForWPF.ViewModels;
-using UniversalFwForWPF.ViewModels.Common;
+
 using UniversalFwForWPF.ViewModels.Dialogs;
 using UniversalFwForWPF.Views;
 using UniversalFwForWPF.Views.Common;
 using UniversalFwForWPF.Views.Dialogs;
+
+using UniversalFWForWPF.Common.Datas;
+using UniversalFWForWPF.Common.ViewModels.Basics;
+using UniversalFWForWPF.Common.ViewModels.Common;
+using UniversalFWForWPF.Common.Views.CommonDialog;
 
 namespace UniversalFwForWPF.Helpers
 {
@@ -50,7 +55,7 @@ namespace UniversalFwForWPF.Helpers
         {
             var myDialog = Dialog.Show<InfoDialogWithTimer>();
 
-            myDialog.DataContext = new DialogVMDefault()
+            myDialog.DataContext = new DialogVMBase()
             {
                 Header = header,
             };
@@ -62,7 +67,7 @@ namespace UniversalFwForWPF.Helpers
         {
             var myDialog = Dialog.Show<WaiterDialog>();
 
-            myDialog.DataContext = new DialogVMDefault()
+            myDialog.DataContext = new DialogVMBase()
             {
                 Header = header,
             };
@@ -87,18 +92,22 @@ namespace UniversalFwForWPF.Helpers
         {
             var myDialog = Dialog.Show<ProjectSelectDialog>();
 
-            myDialog.DataContext = new ProjectViewModel();
+            myDialog.DataContext = new ProjectDialogVM();
 
             var DialogResult1 = await myDialog.GetResultAsync<string>();
 
             return await Task.FromResult(DialogResult1);
         }
-
+        /// <summary>
+        /// ShowYesOrNoDialog
+        /// </summary>
+        /// <param name="header"></param>
+        /// <returns></returns>
         public async Task<DialogResult> ShowResultDialog(string header)
         {
             var myDialog = Dialog.Show<ResultDialog>();
 
-            myDialog.DataContext = new ResultDialogViewModel()
+            myDialog.DataContext = new DialogVMBase()
             {
                 Header = header,
             };
@@ -106,6 +115,29 @@ namespace UniversalFwForWPF.Helpers
             var DialogResult1 = await myDialog.GetResultAsync<DialogResult>();
 
             return await Task.FromResult(DialogResult1);
+        }
+
+        public Task<DialogResultEnum> ShowSerialportSettingDialog(string header = "串口设置")
+        {
+            var myDialog = Dialog.Show<SerialportSettingDialog>();
+
+            myDialog.DataContext = new SerialPortVM()
+            {
+                Header = header,
+            };
+
+            return myDialog.GetResultAsync<DialogResultEnum>();
+        }
+        public Task<DialogResultEnum> ShowLoginDialog(string header = "登陆")
+        {
+            var myDialog = Dialog.Show<LoginDialog>();
+
+            myDialog.DataContext = new LoginDialogVM()
+            {
+                Header = header,
+            };
+
+            return myDialog.GetResultAsync<DialogResultEnum>();
         }
     }
 }

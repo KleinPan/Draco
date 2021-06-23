@@ -1,6 +1,9 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
-namespace UniversalFwForWPF.Configs
+namespace UniversalFWForWPF.Common.Configs
 {
     public class PathConfig
     {
@@ -10,7 +13,7 @@ namespace UniversalFwForWPF.Configs
         public static string ConfigPath { get; set; }
 
         /// <summary> 当前程序路径 </summary>
-        public static string basePath { get; set; } = System.IO.Directory.GetCurrentDirectory();
+        private static string basePath { get; set; } = System.IO.Directory.GetCurrentDirectory();
 
         /// <summary> 下载文件路径 </summary>
         public static string downloadPath { get; set; }
@@ -29,6 +32,12 @@ namespace UniversalFwForWPF.Configs
 
         /// <summary> 临时文件夹 </summary>
         public static string tempPath { get; set; }
+
+        /// <summary> 默认插件路径 </summary>
+        public static string pluginPathDefault { get; set; }
+
+        /// <summary> 用户插件路径 </summary>
+        public static string pluginPathForUser { get; set; }
 
         static PathConfig()
         {
@@ -54,6 +63,12 @@ namespace UniversalFwForWPF.Configs
 
             tempPath = exePath + @"\Temp";
             Directory.CreateDirectory(tempPath);
+
+            pluginPathDefault = exePath + @"\PluginsDefault";
+            Directory.CreateDirectory(pluginPathDefault);
+
+            pluginPathForUser = exePath + @"\PluginsUser";
+            Directory.CreateDirectory(pluginPathForUser);
         }
     }
 }

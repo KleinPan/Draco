@@ -16,12 +16,15 @@ using UniversalFwForWPF.Models.Project;
 
 using UniversalFwForWPF.ViewModels.Basics;
 
+using UniversalFWForWPF.Common.Configs;
+using UniversalFWForWPF.Common.Helpers;
+
 namespace UniversalFwForWPF.ViewModels.Dialogs
 {
-    public class ProjectViewModel : ViewModelBase, IDialogResultable<string>
+    public class ProjectDialogVM : ViewModelBaseR, IDialogResultable<string>
     {
         [Reactive]
-        public ObservableCollection<ProjectModel> ProjctList { get; set; }
+        public ObservableCollection<ProjectModel> ProjctList { get; set; } = new ObservableCollection<ProjectModel>();
 
         [Reactive]
         public ProjectModel SelectedProject { get; set; }
@@ -40,7 +43,7 @@ namespace UniversalFwForWPF.ViewModels.Dialogs
         [Reactive] public string Header { get; set; }
         [Reactive] public string Result { get; set; }
 
-        public ProjectViewModel()
+        public ProjectDialogVM()
         {
             Init();
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UniversalFwForWPF.Datas
+namespace UniversalFWForWPF.Common.Datas
 {
     public enum DialogResultEnum
     {

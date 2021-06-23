@@ -17,6 +17,8 @@ using System.Windows.Threading;
 
 using UniversalFwForWPF.Helpers;
 
+using UniversalFWForWPF.Common.Helpers;
+
 namespace UniversalFwForWPF.Controls
 { 
     /// <summary> 显示消息类 </summary>
@@ -39,7 +41,7 @@ namespace UniversalFwForWPF.Controls
         {
             InitializeComponent();
 
-            ListMessageHelper.NotifyMessage += SetNotifyMessage;
+            //ListMessageHelper.NotifyMessage += SetNotifyMessage;
 
             //初始化配置日志
             //LogManager.Configuration = new XmlLoggingConfiguration(AppDomain.CurrentDomain.BaseDirectory.ToString() + "/NLogLib.config");
