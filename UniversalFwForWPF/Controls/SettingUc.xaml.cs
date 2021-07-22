@@ -42,9 +42,9 @@ namespace UniversalFwForWPF.Controls
                 //PopupConfig.IsOpen = false;
                 if (langName.Equals(GlobalData.Config.Lang)) return;
                 ConfigHelper.Instance.SetLang(langName);
-                LangProvider.Culture = new CultureInfo(langName);
+                //LangProvider.Culture = new CultureInfo(langName);
 
-                MessageBus.Current.SendMessage("LangUpdated");
+                //MessageBus.Current.SendMessage("LangUpdated");
 
                 GlobalData.Config.Lang = langName;
                 GlobalData.Save();

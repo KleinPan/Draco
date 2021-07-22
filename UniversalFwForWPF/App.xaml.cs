@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 using UniversalFwForWPF.Datas;
+using UniversalFwForWPF.Helpers;
 
 namespace UniversalFwForWPF
 {
@@ -30,6 +31,7 @@ namespace UniversalFwForWPF
             // AppCenter.Start("9819cf4d-f19b-49ce-8279-e42a649a436b", typeof(Analytics), typeof(Crashes));
 
             GlobalData.Init();
+            ConfigHelper.Instance.SetLang(GlobalData.Config.Lang);
             InitAutofac();
         }
 

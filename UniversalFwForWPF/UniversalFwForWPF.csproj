@@ -39,7 +39,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="Properties\Langs\lang.en.resx">
+    <EmbeddedResource Update="Properties\Langs\Lang.en.resx">
       <LastGenOutput>Resources_en_us.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
