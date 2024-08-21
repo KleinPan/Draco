@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Draco.Common.Datas;
+﻿using Draco.Common.Enums;
 using Draco.Common.ViewModels.Basics;
 using Draco.Common.ViewModels.Common;
 using Draco.Common.Views.CommonDialog;
@@ -9,8 +7,12 @@ using Draco.ViewModels;
 using Draco.ViewModels.Dialogs;
 using Draco.Views;
 using Draco.Views.Dialogs;
+
 using HandyControl.Controls;
 using HandyControl.Tools.Extension;
+
+using System;
+using System.Threading.Tasks;
 
 namespace Draco.Helpers
 {

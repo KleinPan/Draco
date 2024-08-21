@@ -6,6 +6,7 @@
              xmlns:controls="clr-namespace:Draco.Views.Controls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Draco.Views"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vms="clr-namespace:Draco.ViewModels"
              d:DataContext="{d:DesignInstance Type=vms:MainWindowVM}"
@@ -22,7 +23,7 @@
             </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
-                <RowDefinition />
+
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Menu>
@@ -31,14 +32,29 @@
                     <MenuItem Command="{Binding OpenProjectCommand}" Header="打开项目" />
                     <MenuItem Command="{Binding SaveProjectCommand}" Header="保存项目" />
                 </MenuItem>
-
+                <MenuItem Command="{Binding TestCmd}" Header="Test" />
             </Menu>
-            <Button Grid.Row="1" Width="100" Command="{Binding TestCmd}" Content="Test" />
+
             <!--<controls:MessageListUc Grid.Row="2">
                 <behaviors:Interaction.Behaviors>
                     <command:EventToCommandBehaviorMin Command="{Binding InitControlCommand}" Event="Loaded" PassArguments="True" />
                 </behaviors:Interaction.Behaviors>
             </controls:MessageListUc>-->
+            <UniformGrid Grid.Row="1">
+
+                <lvc:CartesianChart Series="{Binding Series0}" />
+                <lvc:CartesianChart Series="{Binding Series1}" />
+                <lvc:CartesianChart Series="{Binding Series2}" />
+                <lvc:CartesianChart Series="{Binding Series3}" />
+                <lvc:CartesianChart Series="{Binding Series4}" />
+                <lvc:CartesianChart Series="{Binding Series5}" />
+                <lvc:CartesianChart Series="{Binding Series6}" />
+                <lvc:CartesianChart Series="{Binding Series7}" />
+                <lvc:CartesianChart Series="{Binding Series8}" />
+
+            </UniformGrid>
+
+
         </Grid>
     </Border>
 

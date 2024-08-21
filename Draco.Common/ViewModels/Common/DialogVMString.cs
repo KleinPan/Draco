@@ -1,20 +1,16 @@
-﻿using HandyControl.Tools.Extension;
-
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 using Draco.Common.ViewModels.Basics;
 
+using HandyControl.Tools.Extension;
+
 namespace Draco.Common.ViewModels.Common
 {
-    public class DialogVMString : DialogVMBase, IDialogResultable<string>
+    public partial class DialogVMString : DialogVMBase, IDialogResultable<string>
     {
+        [ObservableProperty]
+        string result;
 
-        public new string Result { get; set; }
-
-        public DialogVMString()
-        {
-        }
+        public DialogVMString() { }
     }
 }

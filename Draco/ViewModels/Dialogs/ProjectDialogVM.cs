@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+
 using Draco.Common.Configs;
-using Draco.Common.Datas;
+using Draco.Common.Enums;
 using Draco.Common.ViewModels.Basics;
 using Draco.Configs;
 using Draco.Helpers;
 using Draco.Models.Project;
+
 using HandyControl.Tools.Extension;
+
 using One.Core.ExtensionMethods;
+
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace Draco.ViewModels.Dialogs
 {
@@ -55,7 +59,7 @@ namespace Draco.ViewModels.Dialogs
         {
             try
             {
-                var list = One.Core.Helpers.IOHelper.Instance.ReadContentFromLocal<List<ProjectModel>>(PathConfig.ConfigPath +  AppConfig.ProjectHistory);
+                var list = One.Core.Helpers.IOHelper.Instance.ReadContentFromLocal<List<ProjectModel>>(PathConfig.ConfigPath + AppConfig.ProjectHistory);
                 if (list == null)
                 {
                     return new List<ProjectModel>();

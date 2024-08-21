@@ -3,13 +3,12 @@ using Draco.Common.Configs;
 using Draco.Common.Helpers;
 using Draco.Common.ViewModels.Basics;
 
-using System;
 using System.Collections.ObjectModel;
 using System.IO.Ports;
 
 namespace Draco.Common.ViewModels.Common
 {
-    public class SerialPortVM : DialogVMBase
+    public partial class SerialPortVM : DialogVMBase
     {
         public const string SerialportSettingFileName = "SerialportSetting";
 
@@ -19,21 +18,14 @@ namespace Draco.Common.ViewModels.Common
 
         public ObservableCollection<string> SerialPortNameList { get; set; } = new ObservableCollection<string>();
 
+        [ObservableProperty]
         private string serialPortName;
 
-        public string SerialPortName
-        {
-            get { return serialPortName; }
-            set { SetProperty(ref serialPortName, value); }
-        }
 
+        [ObservableProperty]
         private int baudrate = 115200;
 
-        public int Baudrate
-        {
-            get { return baudrate; }
-            set { SetProperty(ref baudrate, value); }
-        }
+
 
         private ParityEnum parity = ParityEnum.NONE;
 
@@ -42,22 +34,12 @@ namespace Draco.Common.ViewModels.Common
             get { return parity; }
             set { SetProperty(ref parity, value); }
         }
-
+        [ObservableProperty]
         private StopBitsEnum stopBit = StopBitsEnum.USART_StopBits_1;
 
-        public StopBitsEnum StopBit
-        {
-            get { return stopBit; }
-            set { SetProperty(ref stopBit, value); }
-        }
-
+        [ObservableProperty]
         private DataBitsEnum dataBit = DataBitsEnum.USART_WordLength_8b;
 
-        public DataBitsEnum DataBit
-        {
-            get { return dataBit; }
-            set { SetProperty(ref dataBit, value); }
-        }
 
         public int WriteTimeout { get; set; }
         public int ReadTimeout { get; set; }

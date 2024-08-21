@@ -1,4 +1,4 @@
-﻿namespace Draco.Common.Datas
+﻿namespace Draco.Common.Enums
 {
     /// <summary>
     /// 进度汇报用
