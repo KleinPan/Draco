@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Draco.Views.MainContenUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:command="clr-namespace:One.Control.Command;assembly=One.Control"
+             xmlns:controls="clr-namespace:Draco.Views.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Draco.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vms="clr-namespace:Draco.ViewModels"
+             d:DataContext="{d:DesignInstance Type=vms:MainWindowVM}"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <Border>
+        <Grid>
+            <Grid.Resources>
+
+                <!--<DataTemplate DataType="{x:Type vmg:GatewayConfigViewModel}">
+             <local:GatewayConfigUc />
+         </DataTemplate>-->
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Menu>
+                <MenuItem Focusable="True" Header="项目">
+                    <MenuItem Command="{Binding NewProjectCommand}" Header="新建项目" />
+                    <MenuItem Command="{Binding OpenProjectCommand}" Header="打开项目" />
+                    <MenuItem Command="{Binding SaveProjectCommand}" Header="保存项目" />
+                </MenuItem>
+
+            </Menu>
+            <Button Grid.Row="1" Width="100" Command="{Binding TestCmd}" Content="Test" />
+            <!--<controls:MessageListUc Grid.Row="2">
+                <behaviors:Interaction.Behaviors>
+                    <command:EventToCommandBehaviorMin Command="{Binding InitControlCommand}" Event="Loaded" PassArguments="True" />
+                </behaviors:Interaction.Behaviors>
+            </controls:MessageListUc>-->
+        </Grid>
+    </Border>
+
+</UserControl>

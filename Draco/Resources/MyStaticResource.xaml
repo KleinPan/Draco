@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:datas="clr-namespace:Draco.Datas"
+                    xmlns:hc="https://handyorg.github.io/handycontrol"
+                    xmlns:langs="clr-namespace:Draco.Properties.Langs"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <ObjectDataProvider x:Key="LogLevelEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+        <ObjectDataProvider.MethodParameters>
+
+            <x:Type TypeName="datas:LogLevel" />
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+    <ObjectDataProvider x:Key="DataBitsEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+        <ObjectDataProvider.MethodParameters>
+
+            <x:Type TypeName="datas:DataBitsEnum" />
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+
+
+
+</ResourceDictionary>
