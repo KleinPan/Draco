@@ -43,14 +43,7 @@
             <UniformGrid Grid.Row="1">
 
                 <lvc:CartesianChart Series="{Binding Series0}" />
-                <lvc:CartesianChart Series="{Binding Series1}" />
-                <lvc:CartesianChart Series="{Binding Series2}" />
-                <lvc:CartesianChart Series="{Binding Series3}" />
-                <lvc:CartesianChart Series="{Binding Series4}" />
-                <lvc:CartesianChart Series="{Binding Series5}" />
-                <lvc:CartesianChart Series="{Binding Series6}" />
-                <lvc:CartesianChart Series="{Binding Series7}" />
-                <lvc:CartesianChart Series="{Binding Series8}" />
+            
 
             </UniformGrid>
 

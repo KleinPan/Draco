@@ -73,11 +73,11 @@ namespace Draco.ViewModels.Dialogs
         }
 
         [RelayCommand]
-        private void Close()
+        public override void Close()
         {
-            CloseAction?.Invoke();
+            base.Close();
         }
-
+       
         [RelayCommand]
         private async Task DeleteProject()
         {
