@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Ink;
+
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+
 using Draco.Common.Configs;
 using Draco.Common.Helpers;
 using Draco.Common.ViewModels.Basics;
@@ -13,12 +15,16 @@ using Draco.Configs;
 using Draco.Helpers;
 using Draco.Models.Project;
 using Draco.ViewModels.Dialogs;
+
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
+
 using One.Core.ExtensionMethods;
 using One.Core.Helpers;
+
 using SkiaSharp;
+
 using FileHelper = Draco.Helpers.FileHelper;
 
 namespace Draco.ViewModels
@@ -28,10 +34,10 @@ namespace Draco.ViewModels
         #region Property
 
         [ObservableProperty]
-        string projectName;
+        private string projectName;
 
         [ObservableProperty]
-        bool showMainContent;
+        private bool showMainContent;
 
         public MainWindow mainWindow;
 
@@ -42,11 +48,12 @@ namespace Draco.ViewModels
         public const string SettingFileName = "Setting";
         public const string PluginSettingFileName = "PluginSetting";
         public const string ProjectSettingFileName = "ProjectSetting";
+
         #endregion Const
 
         public MainWindowVM()
         {
-           InitData();
+            InitData();
         }
 
         #region Init
@@ -56,14 +63,17 @@ namespace Draco.ViewModels
             InitFrameWork();
         }
 
-        public void InitNullFrameWork() { }
+        public void InitNullFrameWork()
+        {
+        }
 
-        public void InitFrameWork() { }
+        public void InitFrameWork()
+        {
+        }
 
         #endregion Init
 
         #region Menu
-
 
         [RelayCommand]
         private async Task NewProject()
@@ -139,22 +149,18 @@ namespace Draco.ViewModels
             //ListMessageHelper.Notify(SettingFileName);
         }
 
-        #endregion CmdEvent
+        #endregion Menu
 
-        #region LiveChart 
+        #region LiveChart
+
         public ObservableCollection<ISeries> Series0 { get; set; } = new();
-    
 
-        public override void InitData()
+        private void LiveChartTest()
         {
-            base.InitData();
-
             var line0 = new LineSeries<int> { Fill = null, GeometrySize = 3 }; //Stroke = new SolidColorPaint(SKColors.CadetBlue) { StrokeThickness = 3 }
             var valuesCollection0 = new ObservableCollection<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             line0.Values = valuesCollection0;
             Series0.Add(line0);
-
-           
 
             Task.Factory.StartNew(() =>
             {
@@ -163,17 +169,14 @@ namespace Draco.ViewModels
                     var a = Random.Shared.Next(0, 100);
 
                     valuesCollection0.Add(a);
-                
-                  
 
                     Thread.Sleep(100);
-                    
+
                     valuesCollection0.RemoveAt(0);
-                 
                 }
             });
         }
-        #endregion
 
+        #endregion LiveChart
     }
 }

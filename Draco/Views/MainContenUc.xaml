@@ -40,12 +40,7 @@
                     <command:EventToCommandBehaviorMin Command="{Binding InitControlCommand}" Event="Loaded" PassArguments="True" />
                 </behaviors:Interaction.Behaviors>
             </controls:MessageListUc>-->
-            <UniformGrid Grid.Row="1">
-
-                <lvc:CartesianChart Series="{Binding Series0}" />
-            
-
-            </UniformGrid>
+           
 
 
         </Grid>
